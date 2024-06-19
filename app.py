@@ -216,13 +216,13 @@ def main():
 
         if st.session_state.get('upload_section_visible', False):
             uploaded_file = st.file_uploader("Upload GeoJSON file", type=['geojson'], accept_multiple_files=False, key="geojson_upload")
-            if uploaded_file is not None and uploaded_file.size <= 1_000_000:  # Check for file size (1 MB max)
+            if uploaded_file is not None and uploaded_file.size <= 2_000_000:  # Check for file size (1 MB max)
                 # Read the GeoJSON file
                 geojson_data = json.load(uploaded_file)
                 st.session_state['geojson_data'] = geojson_data
                 st.session_state['uploaded_roi'] = True
             elif uploaded_file is not None:
-                st.error("File too large. Please upload a file less than 1 MB.")
+                st.error("File too large. Please upload a file less than 2 MB.")
 
         if st.session_state.get('uploaded_roi', False):
             from_date_uploaded = st.date_input("From Date", key='from_date_uploaded')
