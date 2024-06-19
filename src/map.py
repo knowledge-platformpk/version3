@@ -175,7 +175,9 @@ def display_map(selected_index,selected_basin=None, selected_sub_basin=None, ndv
 
         # Uncomment for soil types
         if st.session_state['soiltypes']:
-            st.write('No Soil Types Collection Found')
+            # st.write('No Soil Types Collection Found')
+            soil = ee.Image('projects/ee-mspkafg/assets/soil_types_raster_500')
+            Map.addLayer(soil.randomVisualizer(),{},'Soil Types')
             # subbasins = ee.FeatureCollection('projects/ee-mspkafg/assets/1-final_validated_data/SubBasins')
             # subbasins_style = {'color': 'blue','fillColor':'#FFFFFF00'}
             # Map.addLayer(subbasins, subbasins_style)
