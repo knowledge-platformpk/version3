@@ -801,42 +801,95 @@ def main():
                         # Code to download the image
                         try:
                             if selected_index == 'SRTM':
-                                download_url = st.session_state['srtm_image'].getDownloadURL({'scale': 90, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['srtm_image'].getDownloadURL({'scale': 90, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['srtm_image'].getDownloadURL({'scale': 90, 'dimensions': [2000,2000]})
                             elif selected_index == 'NDVI':
-                                download_url = st.session_state['ndvi_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['ndvi_image'].getDownloadURL({'scale': 250, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['ndvi_image'].getDownloadURL({'scale': 250, 'dimensions': [2000,2000]})
                             elif selected_index == 'Air Temperature':
-                                download_url = st.session_state['temp_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['temp_image'].getDownloadURL({'scale': 11132, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['temp_image'].getDownloadURL({'scale': 11132, 'dimensions': [2000,2000]})
                             elif selected_index == 'Enhanced Vegetation Index (EVI)':
-                                download_url = st.session_state['evi_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['evi_image'].getDownloadURL({'scale': 250, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['evi_image'].getDownloadURL({'scale': 250, 'dimensions': [2000,2000]})
                             elif selected_index == 'Evapotranspiration ET':
-                                download_url = st.session_state['et_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['et_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['et_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Keetch-Byram Drought Index':
-                                download_url = st.session_state['kbdi_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['kbdi_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['kbdi_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Land Cover (2020)':
-                                download_url = st.session_state['landcover_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['landcover_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['landcover_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Land Surface Temperature':
-                                download_url = st.session_state['lst_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['lst_image'].getDownloadURL({'scale': 1000, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['lst_image'].getDownloadURL({'scale': 1000, 'dimensions': [2000,2000]})
                             elif selected_index == 'Latent Heat Flux (LE)':
-                                download_url = st.session_state['lhf_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['lhf_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['lhf_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Leaf Area Index':
-                                download_url = st.session_state['LAI_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['LAI_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['LAI_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Population':
-                                download_url = st.session_state['population_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['population_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['population_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Potential Evapotranspiration (PET)':
-                                download_url = st.session_state['pet_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['pet_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['pet_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Precipitation':
-                                download_url = st.session_state['Precp_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['Precp_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['Precp_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Snow Cover':
-                                download_url = st.session_state['snowcover_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['snowcover_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['snowcover_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Soil Moisture':
-                                download_url = st.session_state['soil_moisture_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['soil_moisture_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['soil_moisture_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Soil Temperature':
-                                download_url = st.session_state['soil_temperature_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['soil_temperature_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['soil_temperature_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Transpiration (TP)':
-                                download_url = st.session_state['tp_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                try:
+                                    download_url = st.session_state['tp_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['tp_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
                             elif selected_index == 'Wind Speed':
-                                download_url = st.session_state['windspeed_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
-
+                                try:
+                                    download_url = st.session_state['windspeed_image'].getDownloadURL({'scale': 100, 'region': get_sub_basins_download(selected_basin).geometry(0.01).bounds(0.01)})
+                                except:
+                                    download_url = st.session_state['windspeed_image'].getDownloadURL({'scale': 100, 'dimensions': [2000,2000]})
 
                                 # download_url = st.session_state['ndvi_image'].getDownloadURL({'scale': 20})
                             # elif selected_index == 'Air Temperature':
