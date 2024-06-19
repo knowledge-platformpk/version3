@@ -1017,7 +1017,7 @@ def main():
 
 
     if selected == "Tutorial":
-        st.video('https://www.youtube.com/watch?v=a3EQF8EFuD0')
+        st.video('https://youtu.be/bHJJr9_Igaw')
 # Run the app
 if __name__ == "__main__":
     main()
