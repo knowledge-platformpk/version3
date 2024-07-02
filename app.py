@@ -999,7 +999,7 @@ def main():
         st.markdown("""<div style="text-align: justify;">This output was made possible through support provided by the U.S. Agency for International Development’s Mission to Pakistan (USAID/Pakistan) under the terms of Award No. 72039118IO00003. The information expressed in this output does not necessarily reflect the views of the U.S. Agency for International Development. The U.S. Agency for International Development does not take any responsibility for the accuracy or otherwise of any information presented in this output.</div>""" , unsafe_allow_html=True)
 
     if selected == "Reload":
-        redirect("https://www.knowledge-platform.org")
+        redirect("https://www.knowledge-platform.org/")
         # driver = webdriver.Chrome()
         # driver.get("about:blank")
         # url = 'http://muddasirshah.net'
