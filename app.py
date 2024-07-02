@@ -59,6 +59,11 @@ credentials = ee.ServiceAccountCredentials(service_account, 'google-credentials.
 
 ee.Initialize(credentials=credentials)
 
+# External Redirection Function
+def redirect(url):
+    st.markdown(f'<meta http-equiv="refresh" content="0; url={url}">', unsafe_allow_html=True)
+
+
 # Function to get basins and sub-basins.
 def get_basins():
     dataset = ee.FeatureCollection('projects/ee-mspkafg/assets/1-final_validated_data/SubBasins')
@@ -994,6 +999,7 @@ def main():
         st.markdown("""<div style="text-align: justify;">This output was made possible through support provided by the U.S. Agency for International Development’s Mission to Pakistan (USAID/Pakistan) under the terms of Award No. 72039118IO00003. The information expressed in this output does not necessarily reflect the views of the U.S. Agency for International Development. The U.S. Agency for International Development does not take any responsibility for the accuracy or otherwise of any information presented in this output.</div>""" , unsafe_allow_html=True)
 
     if selected == "Reload":
+        redirect("https://ist.edu.pk")
         # driver = webdriver.Chrome()
         # driver.get("about:blank")
         # url = 'http://muddasirshah.net'
@@ -1004,8 +1010,8 @@ def main():
         # st.rerun()
         # st.stop()
 
-        url = 'http://www.knowledge-platform.org'
-        webbrowser.open(url)
+        # url = 'http://www.knowledge-platform.org'
+        # webbrowser.open(url)
 
 
         # url = "http://www.example.com"
