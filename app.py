@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import json
 from streamlit_option_menu import option_menu
+import base64
 
 
 from src.sub_basins.ndvi import get_ndvi_image, create_ndvi_timeseries
@@ -928,10 +929,8 @@ def main():
             with cols3[1]:
                 st.session_state['subbasins_dl'] = st.checkbox('Sub Basins')
 
-            # Assuming your zip file is named "your_file.zip" and is in the project directory
+            
             zip_file_path = "shapefiles.rar"
-
-            # Create a button to download the zip file
             if st.button("Get Static Files"):
                 st.download_button(label="Click to Download",
                                 data=open(zip_file_path, 'rb').read(),
@@ -1000,30 +999,19 @@ def main():
 
     if selected == "Reload":
         redirect("https://www.knowledge-platform.org/")
-        # driver = webdriver.Chrome()
-        # driver.get("about:blank")
-        # url = 'http://muddasirshah.net'
-        # js_code = f"window.location.href = '{url}';"
-        # driver.execute_script(js_code)
-
-        # time.sleep(10)
-        # st.rerun()
-        # st.stop()
-
-        # url = 'http://www.knowledge-platform.org'
-        # webbrowser.open(url)
-
-
-        # url = "http://www.example.com"
-        # js_code = f"""
-        # <script>
-        #     window.location.href = '{url}';
-        # </script>"""
-        # st.markdown(js_code, unsafe_allow_html=True)
-
 
     if selected == "Tutorial":
         st.video('https://youtu.be/bHJJr9_Igaw')
+
+        user_manual_pdf = "user_manual.pdf"
+        with open(user_manual_pdf, "rb") as file:
+            pdf_bytes = file.read()
+        
+        base64_pdf = base64.b64encode(pdf_bytes).decode("utf-8")
+        pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="720" height="1280" type="application/pdf"></iframe>'
+        st.markdown(pdf_display, unsafe_allow_html=True)
+
+            
 # Run the app
 if __name__ == "__main__":
     main()
