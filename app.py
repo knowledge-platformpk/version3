@@ -1001,7 +1001,7 @@ def main():
         redirect("https://www.knowledge-platform.org/")
 
     if selected == "Tutorial":
-        st.video('https://youtu.be/bHJJr9_Igaw')
+        st.video('https://youtu.be/0JpEsW451Y8')
 
         user_manual_pdf = "user_manual.pdf"
         with open(user_manual_pdf, "rb") as file:
