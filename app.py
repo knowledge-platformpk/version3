@@ -984,8 +984,8 @@ def main():
         Map.to_streamlit(height=600)
 
         if 'chart' in st.session_state and st.session_state['chart'] is not None:
-            st.pyplot(st.session_state['chart'])
-            # st.components.v1.html(st.session_state['chart'], height=600)
+            # st.pyplot(st.session_state['chart'])
+            st.components.v1.html(st.session_state['chart'], height=600)
 
 
 
