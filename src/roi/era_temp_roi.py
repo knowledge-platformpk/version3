@@ -72,7 +72,7 @@ try:
         df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')  # Handle invalid dates
         df = df.dropna(subset=['date', 'temperature'])  # Eliminate rows where either date or evi is null
         # Convert DataFrame to a list of lists for Google Charts
-        chart_data = [['Date', 'Temperature (C)']] + df.values.tolist()
+        chart_data = [['Date', 'temperature']] + df.values.tolist()
         chart_html = f"""
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
