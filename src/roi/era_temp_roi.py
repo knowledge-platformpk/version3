@@ -67,44 +67,47 @@ try:
         df = pd.DataFrame(timeseries_list, columns=['date', 'temperature'])
 
 
+        df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
         st.session_state['temp_chart_data'] = df
-        # Remove rows with null dates or EVI values
-        df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')  # Handle invalid dates
-        df = df.dropna(subset=['date', 'temperature'])  # Eliminate rows where either date or evi is null
-        # Convert DataFrame to a list of lists for Google Charts
-        chart_data = [['Date', 'temperature']] + df.values.tolist()
-        chart_html = f"""
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <script type="text/javascript">
-            google.charts.load('current', {{packages: ['corechart', 'line']}});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {{
-                var data = google.visualization.arrayToDataTable({json.dumps(chart_data)});
-                var options = {{
-                    title: 'Air Temperature Time Series',
-                    hAxis: {{title: 'Date', format: 'yyyy-MM-dd'}},
-                    vAxis: {{title: 'Mean Air Temp (C)'}},
-                    legend: 'none'
-                }};
-                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-                chart.draw(data, options);
-            }}
-        </script>
-        <div id="curve_chart" style="width: 900px; height: 500px"></div>
-    """
-        return chart_html
 
-        # df['date'] = pd.to_datetime(df['date']).dt.strftime('%Y-%m-%d')
-        # st.session_state['temp_chart_data'] = df
+        # Create a time-series plot
+        fig, ax = plt.subplots(figsize=(10, 6))  # Adjust the figure size as needed
+        df.plot(x='date', y='temperature', ax=ax, legend=True, title='Temperature Time Series')
+        plt.xlabel('Date', fontsize=6)
+        plt.ylabel('Mean Temperature (C)')
+        plt.grid(True)
+        plt.tight_layout()
 
-        # # Create a time-series plot
-        # fig, ax = plt.subplots(figsize=(10, 6))  # Adjust the figure size as needed
-        # df.plot(x='date', y='temperature', ax=ax, legend=True, title='Temperature Time Series')
-        # plt.xlabel('Date', fontsize=6)
-        # plt.ylabel('Mean Temperature (C)')
-        # plt.grid(True)
-        # plt.tight_layout()
+        return fig
 
-        # return fig
+
+    #     st.session_state['temp_chart_data'] = df
+    #     # Remove rows with null dates or EVI values
+    #     df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')  # Handle invalid dates
+    #     df = df.dropna(subset=['date', 'temperature'])  # Eliminate rows where either date or evi is null
+    #     # Convert DataFrame to a list of lists for Google Charts
+    #     chart_data = [['Date', 'temperature']] + df.values.tolist()
+    #     chart_html = f"""
+    #     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    #     <script type="text/javascript">
+    #         google.charts.load('current', {{packages: ['corechart', 'line']}});
+    #         google.charts.setOnLoadCallback(drawChart);
+    #         function drawChart() {{
+    #             var data = google.visualization.arrayToDataTable({json.dumps(chart_data)});
+    #             var options = {{
+    #                 title: 'Air Temperature Time Series',
+    #                 hAxis: {{title: 'Date', format: 'yyyy-MM-dd'}},
+    #                 vAxis: {{title: 'Mean Air Temp (C)'}},
+    #                 legend: 'none'
+    #             }};
+    #             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    #             chart.draw(data, options);
+    #         }}
+    #     </script>
+    #     <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    # """
+    #     return chart_html
+
+       
 except Exception as e:
         st.write('No Data Available')
