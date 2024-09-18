@@ -69,6 +69,8 @@ try:
         timeseries_list = timeseries.reduceColumns(ee.Reducer.toList(2), ['date', 'evi']).values().get(0).getInfo()
         df = pd.DataFrame(timeseries_list, columns=['date', 'evi'])
 
+        
+        st.session_state['evi_chart_data'] = df
         # Remove rows with null dates or EVI values
         df['date'] = pd.to_datetime(df['date'], errors='coerce').dt.strftime('%Y-%m-%d')  # Handle invalid dates
         df = df.dropna(subset=['date', 'evi'])  # Eliminate rows where either date or evi is null
