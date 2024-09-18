@@ -1,1 +1,1 @@
-web: streamlit run your_script.py --server.maxUploadSize=0.2
+web: streamlit run app.py --server.maxUploadSize=0.2
