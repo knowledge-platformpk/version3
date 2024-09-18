@@ -222,7 +222,7 @@ def main():
 
         if st.session_state.get('upload_section_visible', False):
             uploaded_file = st.file_uploader("Upload GeoJSON file", type=['geojson'], accept_multiple_files=False, key="geojson_upload")
-            if uploaded_file is not None and uploaded_file.size <= 2_000_000:  # Check for file size (1 MB max)
+            if uploaded_file is not None and uploaded_file.size <= 200_000:  # Check for file size (200 kb max max)
                 # Read the GeoJSON file
                 geojson_data = json.load(uploaded_file)
                 st.session_state['geojson_data'] = geojson_data
