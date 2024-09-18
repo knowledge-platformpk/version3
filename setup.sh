@@ -24,5 +24,5 @@ echo "\
 headless = true\n\
 enableCORS=false\n\
 port = $PORT\n\
-maxUploadSize = 0.2\n\
+maxUploadSize = 1\n\
 " > ~/.streamlit/config.toml
