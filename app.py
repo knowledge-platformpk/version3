@@ -1,5 +1,4 @@
 import streamlit as st
-st.set_option('server.maxUploadSize', 0.2) 
 import ee
 import geemap.foliumap as geemap
 from datetime import datetime
